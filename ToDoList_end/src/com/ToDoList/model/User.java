@@ -14,7 +14,7 @@ public class User {
 	public userinfo getUser(String id,String name) throws ClassNotFoundException, SQLException {
 		myData = new Database(DataName, UserName, PassWord);
 		myData.DatabaseConnection();
-		String sql_search = "select * from userinfo where yiban_id = 1";
+		String sql_search = "select * from userinfo where yiban_id = "+id;
 		String sql_insert = "insert into userinfo (yiban_id,user_name) values ("+id+","+name+")";
 		ResultSet res = myData.Search(sql_search);
 		if(res == null) {
