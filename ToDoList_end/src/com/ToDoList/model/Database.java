@@ -1,11 +1,11 @@
-package com.ToDoList.entity;
+package com.ToDoList.model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DatabaseContext {
+public class Database {
 	private String username;
 	private String password;
 	private String Database;
@@ -13,7 +13,7 @@ public class DatabaseContext {
 	private Statement stmt;
 	private ResultSet result;
 
-	public DatabaseContext(String Database,String username,String password) {
+	public Database(String Database,String username,String password) {
 		this.username = username;
 		this.password = password;
 		this.Database = Database;
@@ -49,9 +49,16 @@ public class DatabaseContext {
 	}
 	
 	/*Insert or Delete or Update information,return how many messages have been updated*/
-	public int Database_works(String sql) throws SQLException {
-		stmt = conn.createStatement();
-		int count = stmt.executeUpdate(sql);
-		return count;
+	public boolean Database_works(String sql){
+		boolean flag = false;
+		try {
+			stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			flag = true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return flag;
 	}
 }
