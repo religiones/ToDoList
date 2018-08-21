@@ -19,6 +19,15 @@
   </servlet-mapping>
   
   <servlet>
+      <servlet-name>updateuserinfo</servlet-name>
+      <servlet-class>com.ToDoList.control.updateuserinfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>updateuserinfo</servlet-name>
+      <url-pattern>/updateuserinfo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
       <servlet-name>tasks</servlet-name>
       <servlet-class>com.ToDoList.control.tasks</servlet-class>
   </servlet>
@@ -36,6 +45,33 @@
       <url-pattern>/newset</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+      <servlet-name>deleteset</servlet-name>
+      <servlet-class>com.ToDoList.control.deleteset</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>deleteset</servlet-name>
+      <url-pattern>/deleteset</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>updateset</servlet-name>
+      <servlet-class>com.ToDoList.control.updateset</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>updateset</servlet-name>
+      <url-pattern>/updateset</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>finishset</servlet-name>
+      <servlet-class>com.ToDoList.control.finishset</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>finishset</servlet-name>
+      <url-pattern>/finishset</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
       <servlet-name>newlist</servlet-name>
       <servlet-class>com.ToDoList.control.newlist</servlet-class>
@@ -43,6 +79,33 @@
   <servlet-mapping>
       <servlet-name>newlist</servlet-name>
       <url-pattern>/newlist</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>deletelist</servlet-name>
+      <servlet-class>com.ToDoList.control.deletelist</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>deletelist</servlet-name>
+      <url-pattern>/deletelist</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>updatelist</servlet-name>
+      <servlet-class>com.ToDoList.control.updatelist</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>updatelist</servlet-name>
+      <url-pattern>/updatelist</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>finishlist</servlet-name>
+      <servlet-class>com.ToDoList.control.finishlist</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>finishlist</servlet-name>
+      <url-pattern>/finishlist</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -55,11 +118,65 @@
   </servlet-mapping>
   
   <servlet>
+      <servlet-name>deletetask</servlet-name>
+      <servlet-class>com.ToDoList.control.deletetask</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>deletetask</servlet-name>
+      <url-pattern>/deletetask</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>updatetask</servlet-name>
+      <servlet-class>com.ToDoList.control.updatetask</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>updatetask</servlet-name>
+      <url-pattern>/updatetask</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>finishtask</servlet-name>
+      <servlet-class>com.ToDoList.control.finishtask</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>finishtask</servlet-name>
+      <url-pattern>/finishtask</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
       <servlet-name>newsubtask</servlet-name>
       <servlet-class>com.ToDoList.control.newsubtask</servlet-class>
   </servlet>
   <servlet-mapping>
       <servlet-name>newsubtask</servlet-name>
       <url-pattern>/newsubtask</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>deletesubtask</servlet-name>
+      <servlet-class>com.ToDoList.control.deletesubtask</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>deletesubtask</servlet-name>
+      <url-pattern>/deletesubtask</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>updatesubtask</servlet-name>
+      <servlet-class>com.ToDoList.control.updatesubtask</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>updatesubtask</servlet-name>
+      <url-pattern>/updatesubtask</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>finishsubtask</servlet-name>
+      <servlet-class>com.ToDoList.control.finishsubtask</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>finishsubtask</servlet-name>
+      <url-pattern>/finishsubtask</url-pattern>
   </servlet-mapping>
 </web-app>

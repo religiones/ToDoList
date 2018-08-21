@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.*;
 import com.google.gson.Gson;
 
-public class Get_Task {
+public class Get_Tasks {
 	private String DataName = "jdbc:mysql://localhost:3306/ToDoList?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT";
 	private String UserName = "数据库用户名";
 	private String PassWord = "数据库密码";

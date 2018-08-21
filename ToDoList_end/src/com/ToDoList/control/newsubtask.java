@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ToDoList.model.Add_SubTask;
+import com.ToDoList.model.SubTask;
 
 public class newsubtask extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	private Add_SubTask subtask = null;
+	private SubTask subtask = null;
 	private String user_id = null;
 	private String task_id =null;
 	private String name = null;
@@ -35,7 +35,7 @@ public class newsubtask extends HttpServlet{
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		subtask = new Add_SubTask();
+		subtask = new SubTask();
 		try {
 			boolean result = subtask.add_subtask(user_id, task_id, name);
 			if(result) {

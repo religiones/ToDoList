@@ -58,7 +58,6 @@ public class Database {
 	public boolean Database_works(String sql){
 		boolean flag = false;
 		try {
-			System.out.println(sql);
 			pstm = conn.prepareStatement(sql); 
 			pstm.executeUpdate();
 			flag = true;

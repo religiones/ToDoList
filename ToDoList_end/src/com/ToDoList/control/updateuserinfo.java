@@ -2,41 +2,55 @@ package com.ToDoList.control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.ToDoList.model.Get_Tasks;
+import com.ToDoList.model.User;
 
-public class tasks extends HttpServlet{
+public class updateuserinfo extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	private String id = null;
-	private Get_Tasks myTask = null;
+	private String user_id = null;
+	private String user_name = null;
+	private String user_nickname = null;
+	private String user_sex = null;
+	private User user = null;
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		this.doPost(request, response);
 	}
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("GBK"); //编码统一
+		user_id = request.getParameter("yiban_id");
+		user_nickname = request.getParameter("nickname");
+		user_name = request.getParameter("name");
+		user_sex = request.getParameter("sex");
+		/*设置回复格式*/
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE"); 
 		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization"); 
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
-		id = request.getParameter("id");
+		user = new User();
 		try {
-			myTask = new Get_Tasks();
-			String josnStr = myTask.GetTasks(id);
-			out.write(josnStr);
+			boolean result = user.update_user(user_id, user_name, user_nickname, user_sex);
+			if(result) {
+				/*修改成功*/
+				String jsonStr =  "{\"successfully\":\"001\"}";
+				out.write(jsonStr);
+				out.close();
+			}else {
+				/*修改失败*/
+				String jsonStr =  "{\"error\":\"0x777\"}";
+				out.write(jsonStr);
+				out.close();
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
-			String jsonStr =  "{\"error\":\"0x777\"}";
-			out.write(jsonStr);
 			e.printStackTrace();
-		}
-		out.close();
+		}	
 	}
 }

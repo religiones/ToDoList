@@ -7,11 +7,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.ToDoList.model.Add_Task_set;
+import com.ToDoList.model.Task_set;
 
 public class newset extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	private Add_Task_set task_set = null;
+	private Task_set task_set = null;
 	private String user_id = null;
 	private String name = null;
 	private String description = null;
@@ -32,7 +32,7 @@ public class newset extends HttpServlet{
 		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization"); 
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		task_set = new Add_Task_set();
+		task_set = new Task_set();
 		try {
 			boolean result = task_set.add_set(user_id, name, description);
 			if(result) {
