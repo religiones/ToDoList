@@ -3,9 +3,9 @@ import java.sql.SQLException;
 import com.ToDoList.entity.subtask;
 
 public class SubTask {
-	private String DataName = "jdbc:mysql://localhost:3306/ToDoList?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT";
+	private String DataName = "jdbc:mysql://localhost:3306/ToDoList?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true";
 	private String UserName = "root";
-	private String PassWord = "Root.206814";
+	private String PassWord = "998111";
 	private Database myData = null;
 	/*add*/
 	public boolean add_subtask(String user_id,String task_id,String name) throws ClassNotFoundException, SQLException {

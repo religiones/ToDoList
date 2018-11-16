@@ -6,9 +6,9 @@ import java.util.*;
 import com.google.gson.Gson;
 
 public class Get_Tasks {
-	private static String DataName = "jdbc:mysql://localhost:3306/ToDoList?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT";
+	private static String DataName = "jdbc:mysql://localhost:3306/ToDoList?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true";
 	private static String UserName = "root";
-	private static String PassWord = "Root.206814";
+	private static String PassWord = "998111";
 	
 	/*search*/
 	public String GetTasks(String id) throws ClassNotFoundException, SQLException {

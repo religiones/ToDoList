@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>用户</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="lib\jquery-3.2.1.js"></script>
+    <script src="lib\echarts.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="lib\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="lib\materialize\css\materialize.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assert\css\style.css" />
+    
+</head>
+<body>
+    <ul id="slide-mobile" class="sidenav sidenav-fixed">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="assert/img/office.jpg">
+                </div>
+                <a href="user.html"><img class="circle" src="assert/img/avatar-defualt.svg"></a>
+                <a href="#name"><span class="white-text name">John Doe</span></a>
+                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div>
+        </li>
+        <!-- <li><a href="#!">First Link With Icon</a></li> -->
+        <!-- <li><div class="divider"></div></li> -->
+        <li><a class="subheader">任务列表</a></li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li class="bold">
+                    <a class="collapsible-header waves-effect waves-teal" tabindex="0">任务集一</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#">任务列表一</a></li>
+                            <li><a href="#">任务列表一</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <ul class="collapsible collapsible-accordion">
+                <li class="bold">
+                    <a class="collapsible-header waves-effect waves-teal" tabindex="0">任务集二</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#">任务列表一</a></li>
+                            <li><a href="#">任务列表一</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <main style="background-color: #eee; height:100vh;">
+        <!-- nav bar -->
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" data-target="slide-mobile" class="sidenav-trigger"><i class="fa fa-navicon" style="font-size: 20px;display: inline;"></i></a>
+                <a href="#" class="brand-logo center">TodoList</a>
+                <ul class="right">
+                    <li>
+                        <a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="fa fa-ellipsis-v" style="font-size: 20px;display: inline;"></i></a>
+                        <ul id="dropdown1" class="dropdown-content">
+                            <li><a href="quadrant.html">四象限</a></li>
+                            <li><a href="list.html">时间轴</a></li>
+                            <li><a href="tracking.html">查看进度</a></li>
+                            <li><a href="task_detail.html">添加任务</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div id="user-container" class="block-container">
+            <div class="user-card">
+                <div style="width:100%;height:100px;">
+                    <img width="60px;" class="circle" src="assert/img/avatar-defualt.svg" style="margin:20px;float: left;">
+                    <p class="user-name">John</p>
+                </div>
+                
+                <ul class="static-row">
+                    <li style="border-right:solid 1.5px #5c76af">
+                        已完成<br>100
+                    </li>
+                    <li style="border-right:solid 1.5px #5c76af">
+                        未完成<br>100
+                    </li>
+                    <li>
+                        超时<br>100
+                    </li>
+                </ul>
+            </div>
+
+            <div class="achieve-row">
+
+                <div style="width:100%;height:25px;">
+                    <p>我的勋章墙</p>
+                    <a href="#">查看全部</a>
+                </div>
+                
+                <ul class="achieve-list">
+                    <li>
+                        <img width="40px" src="assert/img/Achievement/64/c/1.png">
+                    </li>
+                    <li>
+                        <img width="40px" src="assert/img/Achievement/64/c/2.png">
+                    </li>
+                    <li>
+                        <img width="40px" src="assert/img/Achievement/64/c/3.png">
+                    </li>
+                    <li>
+                        <img width="40px" src="assert/img/Achievement/64/c/4.png">
+                    </li>
+                    <li>
+                        <img width="40px" src="assert/img/Achievement/64/c/5.png">
+                    </li>
+                    <li>
+                        <img width="40px" src="assert/img/Achievement/64/c/6.png">
+                    </li>
+                    <li>
+                        <img width="40px" src="assert/img/Achievement/64/c/7.png">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <ul class="func-list">
+                <li class="func-item"><a href="#"><i class="fa fa-line-chart"></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<p>数据图表</p></a></li>
+                <li class="func-item"><a href="#"><i class="fa fa-plus-circle"></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<p>添加任务</p></a></li>
+                <li class="func-item"><a href="#"><i class="fa fa-pencil"></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<p>任务计划</p></a></li>
+                <li class="func-item"><a href="#"><i class="fa fa-bug"></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<p style="border:none;">系统反馈</p></a></li>
+            </ul>
+
+            <ul class="func-list">
+                <li class="func-item"><a href="#"><i class="fa fa-cog"></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<p>设置</p></a></li>
+                <li class="func-item"><a href="#"><i class="fa fa-clock-o"></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<p style="border:none;">退出登陆</p></a></li>
+            </ul>
+        </div>
+
+
+        <!-- <div id="taskStatic-table">         
+        </div>
+        <br>
+        <div id="taskTime-table">
+        </div>
+        <br>
+        <div id="radar-map">
+        </div>
+        <br> -->
+
+
+        
+
+
+    </main>
+    <script src="lib\materialize\js\materialize.min.js"></script>
+    <script src="assert\js\dropdown.js"></script>
+    <script src="assert\js\sidenav.js"></script>
+    <script src="assert\js\user.js"></script>
+</body>
+</html>

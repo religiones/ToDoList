@@ -6,9 +6,9 @@ import com.ToDoList.entity.userinfo;
 public class User {
 	private userinfo user = null;
 	private Database myData = null;
-	private String DataName = "jdbc:mysql://localhost:3306/ToDoList?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT";
+	private String DataName = "jdbc:mysql://localhost:3306/ToDoList?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true";
 	private String UserName = "root";
-	private String PassWord = "Root.206814";
+	private String PassWord = "998111";
 	
 	public userinfo getUser(String id,String name) throws ClassNotFoundException, SQLException {
 		myData = new Database(DataName, UserName, PassWord);

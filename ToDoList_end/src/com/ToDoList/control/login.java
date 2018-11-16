@@ -26,11 +26,14 @@ public class login extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		myuser = new User();
-		id = request.getParameter("id");
-		name = request.getParameter("name");
+//		id = request.getParameter("id");
+//		name = request.getParameter("name");
+		id = "a1";
+		name = "reol";
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE"); 
-		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization"); 
+		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization");
+		response.setHeader("Access-Control-Max-Age", "999999");
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 			try {
@@ -43,7 +46,8 @@ public class login extends HttpServlet{
 				}else {
 					/*successful*/
 					String username = new String(user.Getuser_name().getBytes("utf-8"),"iso-8859-1");
-					response.sendRedirect("http://localhost:8080/ToDoList/index.html?name="+username);
+					String user_id = new String(user.Getyiban_id().getBytes("utf-8"),"iso-8859-1");
+					response.sendRedirect("http://localhost:8080/ToDoList/quadrant.html?name="+username+"&id="+user_id);
 				}
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block

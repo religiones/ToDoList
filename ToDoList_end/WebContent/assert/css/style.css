@@ -1,0 +1,289 @@
+/*************************全局样式*******************************/
+body{
+    overflow: hidden;
+}
+
+.fa{display:inline;}
+
+@media only screen and (min-width: 975px) {
+    main{
+        padding-left:300px;
+    }
+}
+.bottom{
+    padding:8px 0 8px 15px;
+    position: fixed;
+    left:0;
+    bottom: 0;
+    width:100%;
+    box-shadow: 1px 0 2px 2px #ccc;
+}
+
+.hidden{
+    display: none;
+}
+
+.nav-wrapper{    
+    background-color:#52a0f3;
+}
+.brand-logo{
+    font-weight: 800;
+}
+
+.menu-skin{
+	width : 100px;
+	padding : 2px;
+	visibility : hidden;
+	position : absolute;
+}
+
+/**************************index主页****************************/
+.page-container{
+    width:100%;
+    height:92vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+/**/
+#list-mod li{
+    font-size:18px;
+}
+#list-mod li .fa{
+    font-size: 20px;
+}
+#list-mod li .task-deadline{
+    margin-top:7px;
+    text-indent: 25px;
+    font-size:10px;
+    color:#ccc;
+}
+
+/*index任务列表四象限样式*/
+#quadrant-mod{
+    position: relative;
+}
+.tasks-pannel{
+    position: relative;
+    width:50%;
+    height:46vh;
+    float: left;
+}
+
+.pannel-title{
+    height: 5vh;
+    position: absolute;
+    top:0;left:0;
+    width:100%;
+    box-shadow: 0 1px 2px 0px #444;
+    padding:1vh 0 1vh 3vw;
+    font-size:2vh;
+    font-weight: 600;
+    color: #fff;
+    z-index: 9;
+}
+.pannel-list{
+    position: relative;
+    margin: 0;
+    padding:5vh 0 0 0;
+    overflow-y:scroll;
+    height:100%;
+}
+.pannel-list::-webkit-scrollbar {
+    display: none;
+}
+
+.pannel-list-item{
+    margin: 0;
+    padding:4px 8px 4px 8px;
+    border-bottom:solid 1px  rgb(102, 100, 100);
+    cursor: pointer;
+    color:rgb(88, 85, 85);
+}
+.pannel-list-item p{
+    width:90%;
+    display: inline-block;
+    position: relative;
+    margin:0;
+    white-space:nowrap;  overflow:hidden;text-overflow: ellipsis;
+}
+
+.pannel-list-item p a{
+    margin-left: 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+.fa-square-o{
+    font-size: 18px;
+    position: absolute;
+    top: 25%;
+}
+
+.fa-check-square{
+    color: #009688;
+}
+
+/*********************tracking进度跟踪*************************/
+/*列表详情*/
+.list-description{
+    width:40%;
+    margin: 12px 10px 12px 10px;
+    float:left;
+}
+.list-description p{
+    margin:5px 0 5px 0;
+    white-space:nowrap;  overflow:hidden;text-overflow: ellipsis;
+}
+
+
+/*****************跟踪进度样式*******************/
+.task-description{
+    width:100%;
+    margin:10px 0 50px 0;
+}
+#task-name{
+    font-size:25px;
+    font-weight: 600;
+    text-align: center;
+}
+.static-item{
+    width:25%;
+    float: left;
+    text-align: center;
+    border-right:solid  1px #ccc;
+}
+.graph-container{
+    width:100%;
+    overflow-x: scroll;
+}
+/*燃尽图*/
+#burnout-map{
+    width:100%;
+}
+/*甘特图*/
+#gantt-map{
+    width:100%;
+}
+
+
+
+/************************detail任务详情****************************/
+.detail-form{
+    height:80vh;
+    position: relative;
+}
+.detail-radios p{
+    float: left;
+}
+.detail-radios p label span{
+    display:none;
+}
+.bottom{
+	background-color:#fff;
+}
+
+.bottom .btn{
+    float: right;
+    margin-right:10px;
+}
+
+
+
+.subtask-list .input-field{
+    margin:0;
+}
+.subtask-list .input-field i{
+    font-size: 20px !important;
+    color:#777;
+}
+.subtask-list .input-field input{
+    margin-left:23px;
+    height:25px;
+    font-size: 12px !important;
+    padding:0;
+}
+
+.input-title p{
+	margin:5px 0 0 10px;
+	font-size:20px;
+	font-weight:600;
+}
+
+/***************************成就系统相关参数***************************/
+.block-container{
+    width:100%;
+    padding:15px 15px 15px 15px;
+    background-color: #fff;
+}
+.user-card{
+    width:100%;
+    height:150px;
+    background-color:#a6ccf5;
+    border-radius: 1.5px;
+    box-shadow: 0 1px 4px 1px rgb(235, 227, 227);
+}
+.user-name{
+    float: left;
+    margin:20px 20px 20px 5px;
+    height:60px;
+    line-height: 60px;
+    font-size: 20px;
+    font-weight: 800;
+}
+.static-row{
+    width:100%;
+    margin: 0;
+}
+.static-row li{
+    width:33.3%;
+    float: left;
+    text-align: center;
+}
+
+.achieve-row{
+    margin-top:10px;
+    height:60px;
+}
+.achieve-row p{
+    float: left;
+    margin: 0;
+}
+.achieve-row  a{
+    float: right;
+}
+
+.achieve-list{
+    width:100%;
+    height: 40px;
+    margin:0;
+    overflow: hidden;
+}
+.achieve-list li{
+    width:50px;
+    float: left;
+    margin:0;
+    
+}
+
+.func-list{
+    margin-top:10px;
+}
+.func-item{
+    width:100%;
+}
+.func-item a{
+    display: block;
+    width:100%;
+    padding:0px 15px 0px 15px;
+    background-color: #fff;
+    font-size: 15px;
+    color:#666;
+}
+.func-item a p{
+    width:85%;
+    letter-spacing: 2px;
+    display: inline-block;
+    border-bottom:solid 1px #ccc;
+    padding:8px 0 8px 0;
+    margin:0;
+}

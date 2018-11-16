@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>todolist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="lib\jquery-3.2.1.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="lib\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="lib\materialize\css\materialize.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assert\css\style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <ul id="slide-mobile" class="sidenav sidenav-fixed">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="assert/img/office.jpg">
+                </div>
+                <a href="user.html"><img class="circle" src="assert/img/avatar-defualt.svg"></a>
+                <a href="#name"><span class="white-text name">John Doe</span></a>
+                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div>
+        </li>
+        <li><a class="subheader">任务列表</a></li>
+        <li class="no-padding" id="tasks-nav">
+            <ul class="collapsible collapsible-accordion" v-for="set in tasks.Tasks_set">
+                <li class="bold">
+                    <a onclick="SidenavSlide(this)" class="collapsible-header waves-effect waves-teal">{{set.set_name}}</a>
+                    <div class="collapsible-body">
+                        <ul v-for="list in tasks.Tasks_list" v-if="list.list_set_fk === set.set_id">
+                            <li v-on:click="ShowList(list.list_id)"><a href="#">{{list.list_name}}</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <main>
+        <!-- nav bar -->
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" data-target="slide-mobile" class="sidenav-trigger"><i class="fa fa-navicon" style="font-size: 20px;display: inline;"></i></a>
+                <a href="#" class="brand-logo center">TodoList</a>
+                <ul class="right">
+                    <li>
+                        <a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="fa fa-ellipsis-v" style="font-size: 20px;display: inline;"></i></a>
+                        <ul id="dropdown1" class="dropdown-content">
+                            <li><a href="quadrant.html">四象限</a></li>
+                            <li><a href="list.html">时间轴</a></li>
+                            <li><a href="tracking.html">查看进度</a></li>
+                            <li><a href="task_detail.html">添加任务</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="page-container">
+            <div id="quadrant-mod" class="view" v-for="list in tasks.Tasks_list" v-bind:id="list.list_id">
+                <div id="prio-1" class="tasks-pannel" style="background-color:rgb(241, 148, 148)">
+                    <div class="pannel-title" style="background-color:rgb(241, 85, 85)">很重要-很紧急</div>
+                    <ul id="prio-1-list" class="pannel-list">
+                        <li class="pannel-list-item" v-for="task in tasks.Task" v-if="task.task_priority ==='很重要-很紧急' && task.task_list_fk == list.list_id && task.task_finish_flag == 0">
+                            <p v-on:click="ShowTask(task.task_id,task.task_deadline)"><i class="fa fa-square-o"></i><a href="task_detail.html">&nbsp; {{task.task_name}}</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <div id="prio-2" class="tasks-pannel"  style="background-color:rgb(241, 232, 148)">
+                    <div class="pannel-title"  style="background-color:rgb(243, 229, 99)">很重要-不紧急</div>
+                    <ul id="prio-2-list" class="pannel-list">
+                        <li class="pannel-list-item" v-for="task in tasks.Task" v-if="task.task_priority ==='很重要-不紧急' && task.task_list_fk == list.list_id && task.task_finish_flag == 0">
+                            <p v-on:click="ShowTask(task.task_id,task.task_deadline)"><i class="fa fa-square-o"></i><a href="task_detail.html">&nbsp; {{task.task_name}}</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <div id="prio-3" class="tasks-pannel" style="background-color:rgb(153, 230, 134)">
+                    <div class="pannel-title" style="background-color:rgb(132, 230, 107)">不重要-很紧急</div>
+                    <ul id="prio-3-list" class="pannel-list">
+                        <li class="pannel-list-item" v-for="task in tasks.Task" v-if="task.task_priority ==='不重要-很紧急' && task.task_list_fk == list.list_id && task.task_finish_flag == 0">
+                            <p v-on:click="ShowTask(task.task_id,task.task_deadline)"><i class="fa fa-square-o"></i><a href="task_detail.html">&nbsp; {{task.task_name}}</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <div id="prio-4" class="tasks-pannel" style="background-color:rgb(134, 200, 230)">
+                    <div class="pannel-title" style="background-color:rgb(73, 174, 221)">不重要-不紧急</div>
+                    <ul id="prio-4-list" class="pannel-list">
+                        <li class="pannel-list-item" v-for="task in tasks.Task" v-if="task.task_priority ==='不重要-不紧急' && task.task_list_fk == list.list_id && task.task_finish_flag == 0">
+                            <p v-on:click="ShowTask(task.task_id,task.task_deadline)"><i class="fa fa-square-o"></i><a href="task_detail.html">&nbsp; {{task.task_name}}</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+          <h4>Congratulation</h4>
+          <hr>
+          <h6>恭喜完成了一个小任务!</h6>
+          <div class="row" style="border-bottom:dotted 1px #333">
+            <div class="input-field col s12">
+                <input id="task-score" type="text" class="validate">
+                <label for="task-score">为自己打个分吧</label>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="modal-close waves-effect waves-green btn-flat" id="ensure">确定</a>
+      </div>
+    </div>
+
+    <div id="modal-message" class="modal">
+        <div class="modal-content">
+          <h4>消息</h4>
+          <p>该任务已超时...</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="modal-close waves-effect waves-green btn-flat">确定</a>
+        </div>
+    </div>
+
+    <script src="lib\materialize\js\materialize.min.js"></script>
+    <script src="assert\js\dropdown.js"></script>
+    <script src="assert\js\sidenav.js"></script>
+    <script src="assert\js\quadrant.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</body>
+</html>

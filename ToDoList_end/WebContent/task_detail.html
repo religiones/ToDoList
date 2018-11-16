@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>任务管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="lib\jquery-3.2.1.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="lib\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="lib\materialize\css\materialize.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assert\css\style.css" /> 
+</head>
+<body>
+    <ul id="slide-mobile" class="sidenav sidenav-fixed">
+        <li>
+        <div class="user-view">
+            <div class="background">
+                <img src="assert/img/office.jpg">
+            </div>
+            <a href="user.html"><img class="circle" src="assert/img/avatar-defualt.svg"></a>
+            <a href="#name"><span class="white-text name">John Doe</span></a>
+            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+        </div>
+        </li>
+        <li><a class="subheader">任务列表</a></li>
+        <li class="no-padding" id="tasks-nav">
+            <ul class="collapsible collapsible-accordion" v-for="set in tasks.Tasks_set">
+                <li class="bold">
+                    <a onclick="SidenavSlide(this)" class="collapsible-header waves-effect waves-teal">{{set.set_name}}</a>
+                    <div class="collapsible-body">
+                        <ul v-for="list in tasks.Tasks_list" v-if="list.list_set_fk === set.set_id">
+                            <li v-on:click="ShowList(list.list_id)"><a href="#">{{list.list_name}}</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <main id="detail">
+        
+        <!-- nav bar -->
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" data-target="slide-mobile" class="sidenav-trigger"><i class="fa fa-navicon" style="font-size: 20px;display: inline;"></i></a>
+                <a href="#" class="brand-logo center">TodoList</a>
+                <ul class="right">
+                    <li>
+                        <a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="fa fa-ellipsis-v" style="font-size: 20px;display: inline;"></i></a>
+                        <ul id="dropdown1" class="dropdown-content">
+                                <li><a href="quadrant.html">四象限</a></li>
+                            <li><a href="list.html">时间轴</a></li>
+                            <li><a href="tracking.html">查看进度</a></li>
+                            <li><a href="task_detail.html" id="add">添加任务</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- form-view -->
+        <div class="row detail-form hidden" style="overflow-x: hidden" id="detail-view">
+            <form class="col s12" v-for="task in tasks.Task" v-if="task.task_id==chooseId">
+              <div class="row" style="border-bottom:solid 1px #aaa">
+                <div class="input-title"><p>任务名</p></div>
+                <div class="input-field col s12">
+                  <input id="task_name_view" placeholder="请输入任务名" type="text" class="validate" v-bind:value="task.task_name">
+                  <label for="task_name_view">任务名</label>
+                </div>
+              </div>
+              <div class="row" style="border-bottom:dotted 1px #333">
+              	<div class="input-title"><p>任务属性</p></div>
+                <div class="input-field col s6">
+                  <input id="rewards_view" placeholder="请输入奖励" type="text" class="validate" v-bind:value="task.task_rewards">
+                  <label for="rewards_view">奖励</label>
+                </div>
+                <div class="input-field col s6">
+                    <select id="deep_view">
+                    <option value="很重要-很紧急">很重要-很紧急</option>
+                    <option value="很重要-不紧急">很重要-不紧急</option>
+                    <option value="不重要-很紧急">不重要-很紧急</option>
+                    <option value="不重要-不紧急">不重要-不紧急</option>
+                    </select>
+                    <label>任务优先级</label>
+                </div>
+
+              </div>
+              <div class="row" style="border-bottom:dotted 1px #333">
+              	<div class="input-title"><p>任务时间</p></div>
+                <div class="input-field col s6">
+                    <!-- <i class="fa fa-calendar prefix"></i> -->
+                    <input id="begin-date_view" type="text" class="datepicker" placeholder="" v-bind:value="beginDate">
+                    <label for="begin-date_view">开始年月</label>
+                </div>                
+                <div class="input-field col s6">
+                    <!-- <i class="fa fa-calendar prefix"></i> -->
+                    <input id="begin-time_view" type="text" class=" timepicker" placeholder="" v-bind:value="beginTime">
+                    <label for="begin-time_view">开始时间</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <!-- <i class="fa fa-calendar prefix"></i> -->
+                    <input id="finish-date_view" type="text" class="datepicker" placeholder="" v-bind:value="endDate">
+                    <label for="finish-date_view">结束年月</label>
+                </div>                
+                <div class="input-field col s6">
+                    <!-- <i class="fa fa-calendar prefix"></i> -->
+                    <input id="finish-time_view" type="text" class=" timepicker" placeholder="" v-bind:value="endTime">
+                    <label for="finish-time_view">结束时间</label>
+                </div>
+              </div>
+              
+              <div class="row" style="border-bottom:dotted 1px #333">
+              	<div class="input-title"><p>任务描述</p></div>
+                <div class="input-field col s12">
+                  <input id="task-description_view" placeholder="请输入任务描述" type="text" class="validate" v-bind:value="task.task_description">
+                  <label for="task-description_view">任务描述</label>
+                </div>
+              </div>
+
+              <div class="row" style="border-bottom:dotted 1px #333">
+                    <div class="input-title"><p>任务关联</p></div>
+                  <div class="input-field col s12">
+                    <select id="choose-list-view">
+                        <option v-for="list in tasks.Tasks_list" v-bind:value="list.list_id">{{list.list_name}}</option>
+                    </select>
+                    <label for="task-description_view">任务关联的任务列表</label>
+                  </div>
+              </div>
+            </form>           
+        </div>
+
+         <!-- form-add -->
+         <div class="row detail-form" style="overflow-x: hidden" id="detail-add">
+            <form class="col s12">
+              <div class="row" style="border-bottom:solid 1px #aaa">
+                <div class="input-title"><p>任务名</p></div>
+                <div class="input-field col s12">
+                  <input id="task_name" type="text" class="validate">
+                  <label for="task_name">任务名</label>
+                </div>
+              </div>
+              <div class="row" style="border-bottom:dotted 1px #333">
+              	<div class="input-title"><p>任务属性</p></div>
+                <div class="input-field col s6">
+                  <input id="rewards" type="text" class="validate">
+                  <label for="rewards">奖励</label>
+                </div>
+                <div class="input-field col s6">
+                    <select id="deep">
+                    <option value="很重要-很紧急" selected>很重要-很紧急</option>
+                    <option value="很重要-不紧急">很重要-不紧急</option>
+                    <option value="不重要-很紧急">不重要-很紧急</option>
+                    <option value="不重要-不紧急">不重要-不紧急</option>
+                    </select>
+                    <label>任务优先级</label>
+                </div>
+
+              </div>
+              <div class="row" style="border-bottom:dotted 1px #333">
+              	<div class="input-title"><p>任务时间</p></div>
+                <div class="input-field col s6">
+                    <!-- <i class="fa fa-calendar prefix"></i> -->
+                    <input id="begin-date" type="text" class="datepicker">
+                    <label for="begin-date">开始年月</label>
+                </div>                
+                <div class="input-field col s6">
+                    <!-- <i class="fa fa-calendar prefix"></i> -->
+                    <input id="begin-time" type="text" class=" timepicker">
+                    <label for="begin-time">开始时间</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <!-- <i class="fa fa-calendar prefix"></i> -->
+                    <input id="finish-date" type="text" class="datepicker">
+                    <label for="finish-date">结束年月</label>
+                </div>                
+                <div class="input-field col s6">
+                    <!-- <i class="fa fa-calendar prefix"></i> -->
+                    <input id="finish-time" type="text" class=" timepicker">
+                    <label for="finish-time">结束时间</label>
+                </div>
+              </div>
+              
+              <div class="row" style="border-bottom:dotted 1px #333">
+              	<div class="input-title"><p>任务描述</p></div>
+                <div class="input-field col s12">
+                  <input id="task-description" type="text" class="validate">
+                  <label for="task-description">任务描述</label>
+                </div>
+              </div>
+
+              <div class="row" style="border-bottom:dotted 1px #333">
+                    <div class="input-title"><p>任务关联</p></div>
+                  <div class="input-field col s12">
+                    <select id="choose-list">
+                        <option v-for="list in lists.Tasks_list" v-bind:value="list.list_id">{{list.list_name}}</option>
+                    </select>
+                    <label for="task-description">任务关联的任务列表</label>
+                  </div>
+              </div>
+            </form>           
+        </div>
+    </main>
+
+    <!-- model -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <h4>消息</h4>
+          <p></p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="modal-close waves-effect waves-green btn-flat">确定</a>
+        </div>
+    </div>
+
+    <!-- button -->
+    <div class="bottom">  
+        <a class="waves-effect waves-light btn modal-trigger" data-target="modal" id="removeTask">删除</a>
+        <a class="waves-effect waves-light btn modal-trigger hidden" data-target="modal" id="updataTask">保存</a>
+        <a class="waves-effect waves-light btn modal-trigger" data-target="modal" id="addTask">提交</a>
+    </div>
+
+    <script src="lib\materialize\js\materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="assert\js\dropdown.js"></script>
+    <script src="assert\js\sidenav.js"></script>
+    <script src="assert\js\detail.js"></script>
+</body>
+</html>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.ToDoList.model.Get_Tasks;
 
-public class tasks extends HttpServlet{
+public class Tasks extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private String id = null;
 	private Get_Tasks myTask = null;
